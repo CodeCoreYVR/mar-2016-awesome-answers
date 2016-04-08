@@ -1,5 +1,4 @@
 class Question < ActiveRecord::Base
-
   # validates_presence_of :title # deprecated > likely to be removed in Rails 5
   # validates :title, :body, presence: true
   validates(:title, {presence: true, uniqueness: {message: "must be unique!"}})

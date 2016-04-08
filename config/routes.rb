@@ -15,6 +15,14 @@ Rails.application.routes.draw do
                                             # method as the route above because
                                             # they have the same URL "/contact_us"
 
+  resources :questions
+  # get    "/questions/new"      => "questions#new"   , as: :new_question
+  # post   "/questions"          => "questions#create", as: :questions
+  # get    "/questions/:id"      => "questions#show"  , as: :question
+  # get    "/questions"          => "questions#index"
+  # get    "/questions/:id/edit" => "questions#edit"  , as: :edit_question
+  # patch  "/questions/:id"      => "questions#update"
+  # delete "/questions/:id"      => "questions#destroy"
 
   # this defines the `root` or home page or our application to go to the
   # WelcomeController with `index` action. We will have access to the helper
