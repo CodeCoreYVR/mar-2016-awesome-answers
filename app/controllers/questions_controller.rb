@@ -54,6 +54,7 @@ class QuestionsController < ApplicationController
   # we receive a request such as : GET /questions/56
   # params[:id] will be `56`
   def show
+    @answer = Answer.new
   end
 
   def index
@@ -86,7 +87,7 @@ class QuestionsController < ApplicationController
   end
 
   def question_params
-    params.require(:question).permit([:title, :body])
+    params.require(:question).permit([:title, :body, :category_id])
   end
 
 end

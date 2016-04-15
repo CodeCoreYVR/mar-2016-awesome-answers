@@ -15,7 +15,17 @@ Rails.application.routes.draw do
                                             # method as the route above because
                                             # they have the same URL "/contact_us"
 
-  resources :questions
+  resources :questions do
+    # get :search, on: :collection
+    # get :search, on: :member
+    # get :search
+
+    # the answers routes will be the standard ones prefixed: /questions/:question_id
+    # this way when, for instance, we want to create an answer we know the
+    # question that it references
+    # all the helpers will be the same as before prefixed with `question_`
+    resources :answers, only: [:create, :destroy]
+  end
   # get    "/questions/new"      => "questions#new"   , as: :new_question
   # post   "/questions"          => "questions#create", as: :questions
   # get    "/questions/:id"      => "questions#show"  , as: :question
