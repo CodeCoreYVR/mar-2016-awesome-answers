@@ -7,6 +7,7 @@ class Question < ActiveRecord::Base
   # :nullify: which makes `question_id` NULL for all associated answers
   has_many :answers, dependent: :destroy
   belongs_to :category
+  belongs_to :user
 
   # validates_presence_of :title # deprecated > likely to be removed in Rails 5
   # validates :title, :body, presence: true
@@ -41,6 +42,10 @@ class Question < ActiveRecord::Base
   def self.search(search_term)
     # where(["title ILIKE :term OR body ILIKE :term", {term: "%#{search_term}%"}])
     where(["title ILIKE ? OR body ILIKE ?", "%#{search_term}%", "%#{search_term}%"])
+  end
+
+  def user_full_name
+    user ? user.full_name : ""
   end
 
   private

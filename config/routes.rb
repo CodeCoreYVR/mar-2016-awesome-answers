@@ -13,7 +13,16 @@ Rails.application.routes.draw do
   get  "/contact_us" => "contact_us#new"
   post "/contact_us" => "contact_us#create" # this will have the same helper
                                             # method as the route above because
+
                                             # they have the same URL "/contact_us"
+
+  resources :users, only: [:new, :create]
+
+  resources :sessions, only: [:new, :create] do
+    delete :destroy, on: :collection
+    # delete :destroy, on: :member
+    # delete :destroy
+  end
 
   resources :questions do
     # get :search, on: :collection

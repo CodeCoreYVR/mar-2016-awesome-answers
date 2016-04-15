@@ -1,4 +1,5 @@
 class QuestionsController < ApplicationController
+  before_action :authenticate_user!, except: [:index, :show]
   # defining a method in as a `before_action` will make it so that Rails
   # executes that method before executing the action. This is still within
   # the same request cycle
@@ -37,7 +38,7 @@ class QuestionsController < ApplicationController
     # we use Strong Parameters feature of Rails
 
     @question       = Question.new(question_params)
-
+    @question.user  = current_user
     if @question.save
       flash[:notice] = "Question created!"
       # render :show
