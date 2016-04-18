@@ -8,7 +8,10 @@ class QuestionsController < ApplicationController
   # be executed before.
   # in the code below `find_question` will only be executed before: show, edit
   # update and destroy actions
-  before_action(:find_question, {only: [:show, :edit, :update, :destroy]})
+  # before_action(:find_question, {only: [:show, :edit, :update, :destroy]})
+
+  before_action :find_question, only: [:edit, :update, :destroy, :show]
+  before_action :authorize_question, only: [:edit, :update, :destroy]
 
   def new
     # we need to define a new `Question` object in order to be able to
@@ -82,6 +85,10 @@ class QuestionsController < ApplicationController
   end
 
   private
+
+  def authorize_question
+    redirect_to root_path unless can? :manage, @question
+  end
 
   def find_question
     @question = Question.find params[:id]
