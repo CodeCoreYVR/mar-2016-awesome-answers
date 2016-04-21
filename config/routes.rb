@@ -25,6 +25,7 @@ Rails.application.routes.draw do
   end
 
   resources :questions do
+    get :lock, on: :member
     # get :search, on: :collection
     # get :search, on: :member
     # get :search
@@ -35,6 +36,7 @@ Rails.application.routes.draw do
     # all the helpers will be the same as before prefixed with `question_`
     resources :answers, only: [:create, :destroy]
   end
+
   # get    "/questions/new"      => "questions#new"   , as: :new_question
   # post   "/questions"          => "questions#create", as: :questions
   # get    "/questions/:id"      => "questions#show"  , as: :question
