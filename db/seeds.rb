@@ -23,4 +23,8 @@ end
   Category.create(name: Faker::Hacker.adjective)
 end
 
+30.times do
+  Tag.create(name: Faker::Hipster.word)
+end
+
 puts Cowsay.say("Generated a 100 questions!")
