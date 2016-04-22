@@ -49,12 +49,16 @@ gem "cancancan"
 
 gem "rails_12factor", group: :production
 
+gem "quiet_assets"
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
 end
 
 group :development do
+  gem "letter_opener"
+
   gem "interactive_editor"
   gem "awesome_print"
   gem "hirb"
