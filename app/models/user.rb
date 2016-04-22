@@ -11,6 +11,9 @@ class User < ActiveRecord::Base
   has_many :questions, dependent: :nullify
   has_many :answers,   dependent: :nullify
 
+  has_many :votes, dependent: :destroy
+  has_many :voted_questions, through: :votes, source: :question
+
   has_many :likes, dependent: :destroy
   # we're using `source` option in here because we used `liked_questions` instead
   # of `questions` (convention) becuase we used `has_many :questions` earlier.
