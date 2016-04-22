@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  match "/delayed_job" => DelayedJobWeb, :anchor => false, via: [:get, :post]
 
   # This defines a route so that when we receive a GET request with url: /home
   # Rails will invoke the WelcomeController with `index` action
